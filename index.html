@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Urban Roast Café | Coffee & Community</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg:#0d1014;
+      --bg-alt:#171b22;
+      --card:#1e232d;
+      --accent:#e4a15a;
+      --accent-soft:#f0d0a1;
+      --text:#f7f5f2;
+      --muted:#b4b0aa;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit;transition:.25s;}
+    ul{list-style:none;}
+    img{max-width:100%;display:block;}
+
+    .container{max-width:1180px;margin:0 auto;padding:0 1.5rem;}
+    .section{padding:4.5rem 0;}
+    .section-title{text-align:center;margin-bottom:2.3rem;}
+    .section-title span{
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:.78rem;
+      color:var(--accent);
+    }
+    .section-title h2{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.4rem;
+      margin-top:.3rem;
+    }
+    .section-title p{
+      max-width:540px;
+      margin:.7rem auto 0;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(13,16,20,.96);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:.75rem 0;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      font-family:'Cormorant Garamond',serif;
+    }
+    .logo-mark{
+      width:36px;height:36px;
+      border-radius:50%;
+      border:1px solid var(--accent);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.2rem;
+      color:var(--accent);
+    }
+    .logo-text{
+      font-size:1.5rem;
+      letter-spacing:1px;
+    }
+    .logo-text span{color:var(--accent);}
+    .nav-links{
+      display:flex;
+      gap:1.4rem;
+      font-size:.88rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    .nav-links a{color:var(--muted);}
+    .nav-links a:hover{color:var(--accent);}
+    .nav-cta{
+      font-size:.8rem;
+      padding:.45rem 1.2rem;
+      border-radius:999px;
+      border:1px solid var(--accent);
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:600;
+    }
+    .nav-cta:hover{
+      background:var(--accent);
+      color:var(--bg);
+    }
+
+    /* Hero */
+    .hero{
+      padding:4.4rem 0 5.2rem;
+      background:
+        radial-gradient(circle at top left,#2b2017 0,transparent 55%),
+        radial-gradient(circle at bottom right,#1f1912 0,transparent 55%),
+        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop') center/cover fixed no-repeat;
+      position:relative;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg,rgba(13,16,20,.88),rgba(13,16,20,.95));
+    }
+    .hero-inner{
+      position:relative;
+      z-index:1;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.3fr 1fr;
+      gap:3rem;
+      align-items:center;
+    }
+    .hero-tag{
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:.78rem;
+      color:var(--accent-soft);
+      margin-bottom:.6rem;
+    }
+    .hero h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:3.1rem;
+      line-height:1.1;
+      margin-bottom:.8rem;
+    }
+    .hero h1 span{color:var(--accent);}
+    .hero p{
+      max-width:520px;
+      font-size:.96rem;
+      color:var(--muted);
+      margin-bottom:1.3rem;
+    }
+    .hero-flags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      font-size:.78rem;
+      margin-bottom:1.7rem;
+    }
+    .hero-flags span{
+      padding:.35rem .9rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .btn{
+      display:inline-block;
+      padding:.65rem 1.5rem;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:600;
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:var(--bg);
+    }
+    .btn-primary:hover{background:#d18f45;}
+    .btn-outline{
+      background:transparent;
+      color:var(--accent-soft);
+      border:1px solid rgba(255,255,255,.35);
+      margin-left:.7rem;
+    }
+    .btn-outline:hover{background:rgba(255,255,255,.12);}
+    .hero-card{
+      background:rgba(10,12,16,.9);
+      border-radius:10px;
+      padding:1.6rem 1.8rem;
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:0 8px 30px rgba(0,0,0,.5);
+    }
+    .hero-card h3{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.25rem;
+      margin-bottom:.4rem;
+    }
+    .hero-card p{
+      font-size:.86rem;
+      color:var(--muted);
+      margin-bottom:.9rem;
+    }
+    .hero-hours{
+      font-size:.84rem;
+    }
+    .hero-hours div{
+      display:flex;
+      justify-content:space-between;
+    }
+
+    /* Features strip */
+    .strip{
+      background:var(--bg-alt);
+      border-top:1px solid rgba(255,255,255,.05);
+      border-bottom:1px solid rgba(255,255,255,.05);
+      padding:1.4rem 0;
+    }
+    .strip-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;
+      font-size:.85rem;
+      text-align:center;
+      color:var(--muted);
+    }
+    .strip-title{
+      font-size:.9rem;
+      color:var(--accent-soft);
+      font-weight:600;
+      margin-bottom:.15rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    /* Menu */
+    .menu{
+      background:var(--bg-alt);
+    }
+    .menu-tabs{
+      display:flex;
+      justify-content:center;
+      gap:1.4rem;
+      margin-bottom:2rem;
+      flex-wrap:wrap;
+    }
+    .menu-tab{
+      background:transparent;
+      border:none;
+      color:var(--muted);
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      padding:.3rem 0;
+      cursor:pointer;
+      position:relative;
+    }
+    .menu-tab.active{
+      color:var(--accent-soft);
+      font-weight:600;
+    }
+    .menu-tab.active::after{
+      content:'';
+      position:absolute;
+      left:0;bottom:-4px;
+      width:100%;height:2px;
+      background:var(--accent);
+    }
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.1rem 3rem;
+    }
+    .menu-item{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      border-bottom:1px dashed rgba(255,255,255,.08);
+      padding-bottom:.55rem;
+    }
+    .menu-item h4{
+      font-size:1rem;
+      font-weight:600;
+    }
+    .menu-item span{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.05rem;
+      color:var(--accent-soft);
+    }
+    .menu-desc{
+      font-size:.8rem;
+      color:var(--muted);
+    }
+    .menu-tag{
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      background:rgba(228,161,90,.15);
+      color:var(--accent-soft);
+      padding:.05rem .4rem;
+      border-radius:999px;
+      margin-left:.4rem;
+    }
+
+    /* Gallery */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:1.1rem;
+    }
+    .gallery-item{
+      border-radius:10px;
+      overflow:hidden;
+      position:relative;
+    }
+    .gallery-item img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.35s;
+    }
+    .gallery-item:hover img{transform:scale(1.06);}
+    .gallery-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
+      opacity:0;
+      display:flex;
+      align-items:flex-end;
+      padding:.7rem;
+      font-size:.8rem;
+      transition:.3s;
+    }
+    .gallery-item:hover .gallery-overlay{opacity:1;}
+
+    /* Events / CTA */
+    .events{
+      background:var(--bg-alt);
+    }
+    .events-grid{
+      display:grid;
+      grid-template-columns:1.1fr 1fr;
+      gap:2.2rem;
+      align-items:center;
+    }
+    .badge{
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--accent-soft);
+      margin-bottom:.4rem;
+    }
+    .events-list li{
+      font-size:.9rem;
+      color:var(--muted);
+      margin-bottom:.45rem;
+    }
+    .events-side{
+      background:var(--card);
+      border-radius:10px;
+      padding:1.6rem 1.8rem;
+      box-shadow:0 6px 24px rgba(0,0,0,.55);
+    }
+    .events-side h3{
+      font-family:'Cormorant Garamond',serif;
+      margin-bottom:.4rem;
+      font-size:1.3rem;
+    }
+    .events-side p{font-size:.88rem;color:var(--muted);margin-bottom:1rem;}
+
+    /* Contact / Visit */
+    .visit{
+      background:var(--bg);
+    }
+    .visit-layout{
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:2.4rem;
+      align-items:flex-start;
+    }
+    .visit-form{
+      background:var(--card);
+      border-radius:10px;
+      padding:1.8rem 1.9rem;
+      box-shadow:0 6px 22px rgba(0,0,0,.5);
+    }
+    .visit-form h3{
+      font-family:'Cormorant Garamond',serif;
+      margin-bottom:.4rem;
+      font-size:1.4rem;
+    }
+    .visit-form p{
+      font-size:.86rem;
+      color:var(--muted);
+      margin-bottom:1rem;
+    }
+    .form-row{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+    }
+    .form-group{margin-bottom:.8rem;}
+    label{
+      display:block;
+      font-size:.78rem;
+      font-weight:600;
+      margin-bottom:.18rem;
+    }
+    input,select,textarea{
+      width:100%;
+      border-radius:6px;
+      border:1px solid rgba(255,255,255,.16);
+      background:#11141a;
+      padding:.45rem .6rem;
+      color:var(--text);
+      font-size:.86rem;
+      font-family:'Poppins',sans-serif;
+      outline:none;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 2px rgba(228,161,90,.35);
+    }
+    textarea{resize:vertical;min-height:80px;}
+
+    .visit-info{
+      font-size:.9rem;
+    }
+    .visit-info h4{
+      font-family:'Cormorant Garamond',serif;
+      margin-bottom:.3rem;
+      font-size:1.1rem;
+    }
+    .visit-info p{color:var(--muted);}
+    .hours-table{
+      font-size:.82rem;
+      border-collapse:collapse;
+      margin-top:.35rem;
+    }
+    .hours-table td{
+      padding:.16rem .1rem;
+    }
+    .hours-table td:first-child{font-weight:600;}
+    .map{
+      margin-top:1rem;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 4px 18px rgba(0,0,0,.65);
+    }
+    .map iframe{
+      border:0;width:100%;height:210px;filter:grayscale(40%);
+    }
+
+    /* Footer */
+    footer{
+      background:#080a0e;
+      color:#b3aca3;
+      padding:2rem 0 1rem;
+      font-size:.8rem;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+    .footer-top{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:1.8rem;
+      margin-bottom:1rem;
+    }
+    .footer-col h4{
+      font-family:'Cormorant Garamond',serif;
+      margin-bottom:.4rem;
+      font-size:1rem;
+      color:var(--text);
+    }
+    .footer-links a{display:block;}
+    .footer-links a:hover{color:var(--accent);}
+    .socials{
+      display:flex;
+      gap:.45rem;
+      margin-top:.4rem;
+    }
+    .socials a{
+      width:26px;height:26px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.35);
+      display:flex;align-items:center;justify-content:center;
+      font-size:.8rem;
+    }
+    .socials a:hover{
+      background:var(--accent);
+      border-color:var(--accent);
+      color:var(--bg);
+    }
+    .footer-bottom{
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.07);
+      padding-top:.5rem;
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr;}
+      .events-grid{grid-template-columns:1fr;}
+      .visit-layout{grid-template-columns:1fr;}
+    }
+    @media(max-width:720px){
+      .nav-links{display:none;}
+      .menu-grid{grid-template-columns:1fr;}
+      .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .strip-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#home" class="logo">
+        <div class="logo-mark"><i class="fas fa-mug-saucer"></i></div>
+        <div class="logo-text">Urban <span>Roast</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a href="#visit" class="nav-cta">Book a Table</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag">Specialty Coffee • Late Night Café</div>
+          <h1>City Lights, <span>Slow Brews</span>,<br>Concrete Jungle Comfort.</h1>
+          <p>
+            Urban Roast Café is designed for long conversations, remote work, and pre‑gig meetups.
+            Expect fresh beans, dim lights, and playlists that move from lo‑fi afternoons to upbeat evenings.
+          </p>
+          <div class="hero-flags">
+            <span>Manual brews & cold coffee</span>
+            <span>Board games & reading nook</span>
+            <span>High‑speed Wi‑Fi & USB charging</span>
+          </div>
+          <div>
+            <a href="#menu" class="btn btn-primary">Explore Menu</a>
+            <a href="#events" class="btn btn-outline">Live Music Nights</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Tonight at Urban Roast</h3>
+          <p>Every Friday and Saturday we host indie artists and open‑mic storytellers. Entry is free; seating is first‑come, first‑served.</p>
+          <ul style="font-size:.84rem;color:var(--muted);margin-bottom:.8rem;">
+            <li>• Acoustic Sessions: 7:30 PM – 9:00 PM</li>
+            <li>• Happy Hour: Flat 20% off on all cold brews till 8:00 PM</li>
+            <li>• Community Table reserved for solo visitors who want to meet new people</li>
+          </ul>
+          <div>
+            <strong style="font-size:.86rem;">Opening Hours</strong>
+            <div class="hero-hours">
+              <div><span>Mon – Thu</span><span>10:00 AM – 11:00 PM</span></div>
+              <div><span>Fri – Sun</span><span>10:00 AM – 12:30 AM</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features strip -->
+  <section class="strip">
+    <div class="container strip-grid">
+      <div>
+        <div class="strip-title">Roastery Grade</div>
+        <div>Beans roasted weekly, dialled‑in espresso, and measured brew ratios for consistency.</div>
+      </div>
+      <div>
+        <div class="strip-title">Work Friendly</div>
+        <div>Power outlets at most tables, stable Wi‑Fi, and quiet zones before 6 PM on weekdays.</div>
+      </div>
+      <div>
+        <div class="strip-title">Food Conscious</div>
+        <div>Clearly labelled vegetarian, vegan, and gluten‑free options on our all‑day menu.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="section menu">
+    <div class="container">
+      <div class="section-title">
+        <span>Concrete brew menu</span>
+        <h2>Drinks & Bites Made for City Nights</h2>
+        <p>Balanced menu of espresso classics, slow brews, flavoured signatures and comfort food for long hangs.</p>
+      </div>
+
+      <div class="menu-tabs">
+        <button class="menu-tab active">Coffee</button>
+        <button class="menu-tab">Cold & Non‑Coffee</button>
+        <button class="menu-tab">Small Plates</button>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div>
+            <h4>Espresso Doppio <span class="menu-tag">Barista’s pick</span></h4>
+            <p class="menu-desc">Balanced shot with chocolate and caramel notes, perfect straight or as a base.</p>
+          </div>
+          <span>₹160</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <h4>Urban Latte</h4>
+            <p class="menu-desc">Velvety latte with a hint of house‑made vanilla bean syrup.</p>
+          </div>
+          <span>₹220</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <h4>Oat Cortado</h4>
+            <p class="menu-desc">Equal parts espresso and steamed oat milk for a short, intense cup.</p>
+          </div>
+          <span>₹210</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <h4>Midnight Cold Brew</h4>
+            <p class="menu-desc">18‑hour immersion brew, served over large ice cubes for slow dilution.</p>
+          </div>
+          <span>₹240</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <h4>Caramel Cold Foam</h4>
+            <p class="menu-desc">Cold brew topped with lightly sweetened cold foam and caramel drizzle.</p>
+          </div>
+          <span>₹260</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <h4>Manual Pour‑Over (V60)</h4>
+            <p class="menu-desc">Single origin of the week; ask our baristas for flavour notes and origin.</p>
+          </div>
+          <span>₹280</span>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-size:.8rem;color:var(--muted);margin-top:1.4rem;">
+        Oat / soy / almond milk available • Extra espresso shot +₹40 • Decaf available on request
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-title">
+        <span>Inside urban roast</span>
+        <h2>Exposed Brick, Neon Glow, and Warm Wood</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="Bar counter">
+          <div class="gallery-overlay">Bar counter with custom lighting and slow‑brew bar</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" alt="Seating">
+          <div class="gallery-overlay">Booth seating for groups and game nights</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=800&auto=format&fit=crop" alt="Neon sign">
+          <div class="gallery-overlay">Neon wall for those mandatory café photos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1477764227684-8c4e5bca6f0d?q=80&w=800&auto=format&fit=crop" alt="Food">
+          <div class="gallery-overlay">Fries, nachos and sliders to fuel long conversations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events / Community -->
+  <section id="events" class="section events">
+    <div class="container">
+      <div class="section-title">
+        <span>Community nights</span>
+        <h2>More Than a Café: Your Evening Hangout</h2>
+        <p>Weekly events curated for people who love stories, music and calm corners in the middle of the city.</p>
+      </div>
+
+      <div class="events-grid">
+        <div>
+          <div class="badge">Weekly schedule</div>
+          <ul class="events-list">
+            <li><strong>Wednesday – Open Mic:</strong> Poetry, stand‑up, storytelling. Slots announced on Instagram every Monday.</li>
+            <li><strong>Friday – Indie Gig:</strong> Live acoustic sets from upcoming artists, no cover charge.</li>
+            <li><strong>Sunday – Board Game Social:</strong> Join strangers for strategy, co‑op and party games.</li>
+          </ul>
+          <p style="margin-top:.6rem;font-size:.9rem;color:var(--muted);">
+            We keep volumes conversation‑friendly. Working guests are welcome outside live performance windows,
+            and there are always laptop‑free zones for those who just want to unplug.
+          </p>
+        </div>
+
+        <div class="events-side">
+          <h3>Host Your Own Event</h3>
+          <p>Looking for an intimate space for a book launch, meet‑up or community workshop? We block a section of the café and customise food and coffee packages per head.</p>
+          <ul style="font-size:.86rem;color:var(--muted);margin-bottom:1rem;">
+            <li>• Capacity: 20–35 people depending on layout</li>
+            <li>• Screen & basic sound available on request</li>
+            <li>• Custom menu with veg, vegan and gluten‑free options</li>
+          </ul>
+          <a href="#visit" class="btn btn-primary" style="width:100%;text-align:center;">Enquire About Private Booking</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit / Contact -->
+  <section id="visit" class="section visit">
+    <div class="container">
+      <div class="section-title">
+        <span>Visit & contact</span>
+        <h2>Book a Table or Just Drop By</h2>
+        <p>Use the form to request seating for groups and events. Solo guests and walk‑ins are always welcome while seats last.</p>
+      </div>
+
+      <div class="visit-layout">
+        <!-- Form -->
+        <div class="visit-form">
+          <h3>Reservation Request</h3>
+          <p>We confirm all reservations by SMS or WhatsApp within 20 minutes during café hours.</p>
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Name *</label>
+                <input type="text" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label>Phone *</label>
+                <input type="tel" placeholder="+91‑XXXXXXXXXX" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date *</label>
+                <input type="date" required>
+              </div>
+              <div class="form-group">
+                <label>Time *</label>
+                <input type="time" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Guests *</label>
+                <select required>
+                  <option value="">Select</option>
+                  <option>1–2</option>
+                  <option>3–4</option>
+                  <option>5–6</option>
+                  <option>7–10</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Prefered zone</label>
+                <select>
+                  <option value="">No preference</option>
+                  <option>Near stage</option>
+                  <option>Quiet corner</option>
+                  <option>Window seating</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Notes</label>
+              <textarea placeholder="Event type, laptop use, dietary preferences, etc."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:.25rem;">Send Request</button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="visit-info">
+          <div style="margin-bottom:1.1rem;">
+            <h4>Address</h4>
+            <p>
+              Urban Roast Café<br>
+              5th Floor Courtyard, Metro Walk,<br>
+              Hazratganj, Lucknow, Uttar Pradesh 226001
+            </p>
+          </div>
+          <div style="margin-bottom:1.1rem;">
+            <h4>Contact</h4>
+            <p>
+              Phone: +91‑99888‑77665<br>
+              Email: hello@urbanroast.in<br>
+              Instagram: @urbanroast.cafe
+            </p>
+          </div>
+          <div>
+            <h4>Hours</h4>
+            <table class="hours-table">
+              <tr><td>Mon – Thu</td><td>10:00 AM – 11:00 PM</td></tr>
+              <tr><td>Fri – Sun</td><td>10:00 AM – 12:30 AM</td></tr>
+              <tr><td>Kitchen</td><td>Snacks till 11:45 PM</td></tr>
+            </table>
+          </div>
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.09709278382!2d80.94615931504308!3d26.872281783145535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be2f9d8b8c8cf%3A0x7d5a4b2f1f98d2b7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div style="max-width:320px;">
+          <div class="logo">
+            <div class="logo-mark"><i class="fas fa-mug-saucer"></i></div>
+            <div class="logo-text">Urban <span>Roast</span></div>
+          </div>
+          <p style="margin-top:.35rem;">
+            A late‑night café for people who like their coffee strong, music indie and spaces a little bit moody.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <div class="footer-links">
+            <a href="#menu">Menu</a>
+            <a href="#events">Events</a>
+            <a href="#visit">Reservations</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Urban Roast Café. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
